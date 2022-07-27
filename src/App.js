@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import classes from './App.module.css'
 import About from './About/About'
 import Cars from './Cars/Cars'
+import {Route, Routes, Link} from 'react-router-dom'
 
 class App extends Component {
   render() {
@@ -10,19 +11,29 @@ class App extends Component {
       <div>
         <nav className={classes.nav}>
           <ul>
+
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
+
             <li>
-              <a href="/about">About</a>
+              <Link to="/about">About</Link>
             </li>
+
+            <li>
+              <Link to="/cars">Cars</Link>
+            </li>
+
           </ul>
         </nav>
 
         <hr/>
-        <About />
 
-        <Cars />
+        <Routes>
+          <Route path='/about' element={<About/>} />
+          <Route path='/cars' element={<Cars/>} />
+        </Routes>
+
       </div>
     );
   }
